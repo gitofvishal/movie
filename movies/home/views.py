@@ -9,3 +9,9 @@ def home(request):
         'info':info
     }
     return render(request,'home.html',context)
+
+def download(request,id=0):
+    print(id)
+    rec=moviesinfo.objects.filter(id=id).first()
+    mrec={'rec':rec}
+    return render(request,'download.html',mrec)
