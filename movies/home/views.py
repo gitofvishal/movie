@@ -15,3 +15,11 @@ def download(request,id=0):
     rec=moviesinfo.objects.filter(id=id).first()
     mrec={'rec':rec}
     return render(request,'download.html',mrec)
+
+def search(request):
+    if request.method == "POST":
+        name=request.POST.get('name')
+    print(name)
+    s=moviesinfo.objects.filter(name__icontains=name)
+    srec={'s':s}
+    return render(request,'search.html',srec)

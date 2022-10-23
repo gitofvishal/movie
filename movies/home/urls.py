@@ -4,5 +4,6 @@ from django.urls import path
 from . import views
 urlpatterns = [
     path('',views.home,name='home'),
-    path('download/<int:id>',views.download)
+    path('download/<int:id>',views.download),
+    path('search',views.search)
 ]
