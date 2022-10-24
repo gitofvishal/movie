@@ -20,6 +20,8 @@ def search(request):
     if request.method == "POST":
         name=request.POST.get('name')
     print(name)
-    s=moviesinfo.objects.filter(name__icontains=name)
-    srec={'s':s}
-    return render(request,'search.html',srec)
+    info=moviesinfo.objects.filter(name__icontains=name)
+    context={
+        'info':info
+    }
+    return render(request,'home.html',context)
