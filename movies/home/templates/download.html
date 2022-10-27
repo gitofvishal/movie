@@ -18,11 +18,14 @@
             <p><b>info:</b><br>{{rec.desc}}</p>
             <br>   
             <h3><b>Download</b></h3>
-            <a href="{{rec.link480p}}" class="btn btn-primary btn-lg btn-block active" width="150" role="button" aria-pressed="true">480p</a>
-            <br>
-            <a href="{{rec.link720p}}" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">720p</a>
-            <br>
-            <a href="{{rec.link1080p}}" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">1080p</a>
+            <h4>{{rec.name}} [{{rec.size480p}}]</h4>
+            <a href="{{rec.link480p}}" class="btn btn-outline-success btn-lg my-2 my-sm-0" role="button" aria-pressed="true">480p</a>
+            <br><br>
+            <h4>{{rec.name}} [{{rec.size720p}}]</h4>
+            <a href="{{rec.link720p}}" class="btn btn-outline-success btn-lg my-2 my-sm-0" role="button" aria-pressed="true">720p</a>
+            <br><br>
+            <h4>{{rec.name}} [{{rec.size1080p}}]</h4>
+            <a href="{{rec.link1080p}}" class="btn btn-outline-success btn-lg my-2 my-sm-0" role="button" aria-pressed="true">1080p</a>
             <br>
         </div>
         

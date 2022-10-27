@@ -1,5 +1,12 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
 <body style="background-color: rgb(15, 15, 15)">
   
 
@@ -13,15 +20,47 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
       
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
         <div class="container-fluid">
           <a class="navbar-brand" href="/">MoviesSpace</a>
-
-            
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Gerne
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Thriller</a></li>
+                  <li><a class="dropdown-item" href="#">Mystery</a></li>
+                  <li><a class="dropdown-item" href="#">Thriller</a></li>
+                  <li><a class="dropdown-item" href="#">sci-fi</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Year
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">2012</a></li>
+                  <li><a class="dropdown-item" href="#">2013</a></li>
+                  <li><a class="dropdown-item" href="#">2014</a></li>
+                  <li><a class="dropdown-item" href="#">2015</a></li>
+                  <li><a class="dropdown-item" href="#">2016</a></li>
+                </ul>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
             <form class="form-inline my-lg-0" method="post" action="search">
               {% csrf_token %}
                 <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search by name" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
+          </div>
         </div>
         </nav><br>
         
