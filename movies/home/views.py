@@ -10,13 +10,13 @@ from rest_framework.response import Response
 
 #_____________________________________________________________#
 @api_view(['GET'])                                            #                                                            
-def read(request):                                            #
+def apiread(request):                                         #
     info=moviesinfo.objects.all()                             #                
     serialize=movieapi(info,many=True)                        #                    
     return Response(serialize.data)                           #                
 @api_view(['GET'])                                            #
-def readone(request):                                         #    
-    rec=moviesinfo.objects.filter(id=id).first()              #                                
+def apireadone(request,id=0):                                 #    
+    rec=moviesinfo.objects.filter(id=id)                      #                                
     serialize=movieapi(rec,many=True)                         #                    
     return Response(serialize.data)                           #                
 @api_view(['GET'])                                            #

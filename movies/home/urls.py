@@ -6,7 +6,7 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('download/<int:id>',views.download),
     path('search',views.search),
-    path('apiread',views.read),
-    path('readone',views.readone),
+    path('apiread',views.apiread),
+    path('apireadone/<int:id>',views.apireadone),
     path('apisearch/<str:name>',views.readsearch),
 ]
