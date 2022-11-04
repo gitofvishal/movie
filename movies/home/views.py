@@ -52,3 +52,19 @@ def search(request):
         'info':info
     }
     return render(request,'home.html',context)
+
+
+def gerne(request,gerne=''):
+    info=moviesinfo.objects.filter(gerne__icontains=gerne)
+    context={
+        'info':info
+    }
+    return render(request,'home.html',context)
+
+
+def release_year(request,y=''):
+    info=moviesinfo.objects.filter(release_year__icontains=y)  
+    context={
+        'info':info
+    }
+    return render(request,'home.html',context)
