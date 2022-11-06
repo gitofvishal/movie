@@ -24,6 +24,16 @@ def readsearch(request,name=''):                              #
     info=moviesinfo.objects.filter(name__icontains=name)      #                                    
     serialize=movieapi(info,many=True)                        #                    
     return Response(serialize.data)                           #                
+@api_view(['GET'])                                            #
+def searchyear(request,y=''):                                 #
+    info=moviesinfo.objects.filter(release_year__icontains=y) #                                    
+    serialize=movieapi(info,many=True)                        #                    
+    return Response(serialize.data)                           #                
+@api_view(['GET'])                                            #
+def searchgerne(request,gerne=''):                            #
+    info=moviesinfo.objects.filter(gerne__icontains=gerne)    #                                    
+    serialize=movieapi(info,many=True)                        #                    
+    return Response(serialize.data)                           #                
 #_____________________________________________________________#
 
 
