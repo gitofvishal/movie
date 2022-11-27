@@ -5,7 +5,7 @@ from django.contrib import messages
 from .serializers import movieapi
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+from django.views.decorators.csrf import requires_csrf_token
 
 
 #_____________________________________________________________#
@@ -79,6 +79,7 @@ def release_year(request,y=''):
     return render(request,'home.html',context)
 
 
+@requires_csrf_token
 def form(request,id=0):
     print(id)
     # rec=moviesinfo.objects.filter(id=id).first()
