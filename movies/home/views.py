@@ -52,6 +52,11 @@ def download(request,id=0):
     mrec={'rec':rec}
     return render(request,'download.html',mrec)
 
+def form(request,id=0):
+    print(id)
+    rec=moviesinfo.objects.filter(id=id).first()
+    mrec={'rec':rec}
+    return render(request,'download.html',mrec)
 
 def search(request):
     if request.method == "POST":
