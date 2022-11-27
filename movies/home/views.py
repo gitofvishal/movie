@@ -52,12 +52,6 @@ def download(request,id=0):
     mrec={'rec':rec}
     return render(request,'download.html',mrec)
 
-def form(request,id=0):
-    print(id)
-    rec=moviesinfo.objects.filter(id=id).first()
-    mrec={'rec':rec}
-    return render(request,'download.html',mrec)
-
 def search(request):
     if request.method == "POST":
         name=request.POST.get('name')
@@ -83,3 +77,10 @@ def release_year(request,y=''):
         'info':info
     }
     return render(request,'home.html',context)
+
+
+def form(request,id=0):
+    print(id)
+    # rec=moviesinfo.objects.filter(id=id).first()
+    # mrec={'rec':rec}
+    return redirect(download,id=id)
