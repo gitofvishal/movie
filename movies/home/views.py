@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from .models import moviesinfo
+from .models import moviesinfo,Contact
 from django.contrib import messages
 from .serializers import movieapi
 from rest_framework.decorators import api_view
@@ -81,7 +81,12 @@ def release_year(request,y=''):
 
 @requires_csrf_token
 def form(request,id=0):
-    print(id)
-    # rec=moviesinfo.objects.filter(id=id).first()
-    # mrec={'rec':rec}
+    # print(id)
+    if request.method=="POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        desc = request.POST.get('desc')
+        # print(name,'\n',email,'\n',desc)
+        Contact(name=name, email=email, decs=desc).save()
+        messages.success(request, 'Your message has been sent!')
     return redirect(download,id=id)
