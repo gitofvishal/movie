@@ -14,4 +14,6 @@ urlpatterns = [
     path('apiread',views.apiread),
     path('apireadone/<int:id>',views.apireadone),
     path('apisearch/<str:name>',views.readsearch),
+    path('con',views.readcon),
+    path('create',views.createcon),
 ]
