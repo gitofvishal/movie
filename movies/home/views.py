@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from .models import moviesinfo
+from .models import moviesinfo,Contact
 from django.contrib import messages
-from .serializers import movieapi
+from .serializers import movieapi,con
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+from django.views.decorators.csrf import requires_csrf_token
 
 
 #_____________________________________________________________#
@@ -33,8 +33,19 @@ def searchyear(request,y=''):                                 #
 def searchgerne(request,gerne=''):                            #
     info=moviesinfo.objects.filter(gerne__icontains=gerne)    #                                    
     serialize=movieapi(info,many=True)                        #                    
-    return Response(serialize.data)                           #                
-#_____________________________________________________________#
+    return Response(serialize.data)                           #
+#______________________________________________________________#
+@api_view(['GET'])                                              #
+def readcon(request):                                           #
+    return Response(con(Contact.objects.all(),many=True).data)  #
+@api_view(['POST'])                                             #
+def createcon(request):                                         #
+    serialize=con(data=request.data)                            #
+    if serialize.is_valid():                                    #
+        serialize.save()                                        #
+    return Response(serialize.data)                             #
+                                                                #
+#_______________________________________________________________#
 
 
 
@@ -51,7 +62,6 @@ def download(request,id=0):
     rec=moviesinfo.objects.filter(id=id).first()
     mrec={'rec':rec}
     return render(request,'download.html',mrec)
-
 
 def search(request):
     if request.method == "POST":
@@ -78,3 +88,16 @@ def release_year(request,y=''):
         'info':info
     }
     return render(request,'home.html',context)
+
+
+@requires_csrf_token
+def form(request,id=0):
+    # print(id)
+    if request.method=="POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        desc = request.POST.get('desc')
+        # print(name,'\n',email,'\n',desc)
+        Contact(name=name, email=email, decs=desc).save()
+        messages.success(request, 'Your message has been sent!')
+    return redirect(download,id=id)

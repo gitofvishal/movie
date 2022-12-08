@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
+{% block title %}Download{% endblock title %}
 
 {% block body %}
-
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+  <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+ {% endfor %}
 <div class="container text-white">
     <center>
         <br>
@@ -30,5 +38,34 @@
         </div>
         
     </center>
+    <br><br>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <footer><div class="container">
+
+        <div class="container mb-3 py-4">
+            <h2 class="text">Leave a Reply</h2>
+            <form method="post" action="/form/{{rec.id}}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                <textarea class="form-control bg-dark text-white" id="exampleFormControlTextarea1" name="desc" rows="3" placeholder="Enter Comment"></textarea>
+              </div>
+              <div class="row">
+                  <div class="col form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control bg-dark text-white" id="name" name="name" placeholder="Enter your Name">
+                  </div>
+          
+                  <div class="col form-group">
+                      <label for="email">Email address</label>
+                      <input type="email" class="form-control bg-dark text-white" id="email" name="email" placeholder="Enter Your Email">
+                  </div>
+              </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        
+        </div>
+    </div>
+    </footer>
 </div>
 {% endblock body %}
